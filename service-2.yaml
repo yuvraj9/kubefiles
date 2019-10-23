@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: appb-svc
+spec:
+  selector:
+    app: appb
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
