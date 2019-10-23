@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appb
+spec:
+  selector:
+    matchLabels:
+      app: appb
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: appb
+    spec:
+      containers:
+      - name: appb
+        image: docker.io/yuvraj9/app2:8
+        ports:
+        - containerPort: 80
