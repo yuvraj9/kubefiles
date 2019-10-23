@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: appa
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9090'
+spec:
+  selector:
+    matchLabels:
+      app: appa
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: appa
+    spec:
+      containers:
+      - name: appa
+        image: docker.io/yuvraj9/app1:11
+        ports:
+        - containerPort: 80
