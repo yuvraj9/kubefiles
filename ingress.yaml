@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx
+  annotations:
+     kubernetes.io/ingress.class: nginx
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     ingress.kubernetes.io/rewrite-target: "/"
+spec:
+  rules:
+  - http:
+     paths:
+     - path: /app1.html
+       backend:
+         serviceName: appa-svc
+         servicePort: 80
+     - path: /app2.html
+       backend:
+         serviceName: appb-svc
+         servicePort: 80
+     - path: /*
+       backend:
+         serviceName: prometheus-1-grafana
+         servicePort: 80
